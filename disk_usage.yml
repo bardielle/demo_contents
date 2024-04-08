@@ -1,0 +1,10 @@
+- hosts: all
+
+  tasks:
+    - name: disk usage
+      ansible.builtin.shell: df -h |head -n 2
+      register: disk_usage
+
+    - name: Display output
+      ansible.builtin.debug:
+        var: disk_usage.stdout_lines
